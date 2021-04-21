@@ -1,0 +1,81 @@
+main {
+    margin-top: 15rem;
+    margin-bottom: 150px;
+}
+.introduction-text {
+    margin-left: 10rem;
+    line-height: 1.1;
+}
+.underline {
+    font-weight: bold;
+    font-size: 4rem;
+}
+.search-form_container {
+    background-color: #ffff4d;
+    margin-top: 5rem;
+    .underline {
+        margin-left: 10rem;
+    }
+}
+.search-form {
+    display: flex;
+    align-items: baseline;
+    min-height: 30rem;
+    justify-content: space-around;
+    max-width: 170rem;
+    margin: 0 auto;
+
+    padding-top: 5rem;
+}
+input {
+    padding: 2rem 0;
+    border: none;
+    width: 90rem;
+}
+select {
+    padding: 2.2rem 0;
+    border: none;
+    width: 40rem;
+    padding-left: 3rem;
+    font-weight: bold;
+}
+.result-section {
+    min-height: 50rem;
+    max-width: 163rem;
+    background-color: white;
+    // padding: 5rem 0;
+    margin: 0 auto;
+   
+    p {
+        font-weight: bold;
+    }
+}
+.result-section_container {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    padding: 3rem 0;
+}
+
+.result-section_single {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "col-1 col-2 col-3 col-4 col-5";
+    
+    min-height: 80px;
+}
+.id-single, .artist-name, .artist-single, .album-single {
+    padding: 0 50px;
+}
+
+.result-section_counter {
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+}
+.id-single {
+    text-align: center;
+}

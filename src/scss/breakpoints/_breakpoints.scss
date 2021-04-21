@@ -1,0 +1,13 @@
+@mixin mediaquery($media) {
+    @media screen and (min-width: $media) { @content; }
+}
+
+/* Extra Small Devices, Phones */
+$xsmall: 620px;
+/* Small Devices, Tablets */
+$small: 768px;
+/* Medium Devices, Desktops */
+$medium: 992px;
+/* Large Devices, Wide Screens */
+$large: 1200px;
+// $xlarge: 1400px;

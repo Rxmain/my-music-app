@@ -1,0 +1,108 @@
+body {
+    font-family: $monserrat;
+}
+h1,
+h2,
+h3 {
+    font-family: $monserrat;
+}
+.h2--big {
+    font-family: $monserrat;
+    font-size: 3.2rem;
+    @include mediaquery($medium) {
+        font-size: 7.2rem;
+    }
+}
+.h2--small {
+    font-family: $monserrat;
+    font-size: 2.8rem;
+    @include mediaquery($medium){
+        font-size: 4.8rem;
+    }
+}
+h2 {
+    color: $black;
+    font-size: 2.8rem;
+    @include mediaquery($medium){
+        font-size: 4.8rem;
+    }
+}
+.h3--small {
+    font-family: $monserrat;
+    color: $black;
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+p {
+    color: $black;
+}
+
+.button--big {
+    padding: 1rem 3rem;
+
+    font-size: 1.5rem;
+    text-align: center;
+    
+    border: 1px solid #707070;
+    transition: .2s ease-in-out;
+    @include mediaquery($medium) {
+        font-size: 4rem;
+        text-align: unset;
+    }
+    &:hover {
+        background-color: $white;
+        color: $orange;
+    }
+}
+
+@keyframes bounceUp {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: 5px;
+    }
+    100% {
+        top: 0;
+    }
+}
+.button {
+    display: block;
+    background-color: $black;
+    color: yellow;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 600;
+
+    max-width: 200px;
+
+    text-align: center;
+    border: none;
+    display: inline-block;
+    position: relative;
+
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 5rem;
+
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row-reverse;
+
+    align-items: center;
+    justify-content: space-evenly;
+
+    &::before {
+        content: "";
+        background-image: url('../img/double-arrow.svg');
+        width: 25px;
+        height: 25px;
+        display: block;
+        position: relative;
+
+        animation-name: bounceUp;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+}

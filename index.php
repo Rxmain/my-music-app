@@ -21,7 +21,9 @@
 
             </div>
             <div class="music-background"></div>
+           
         </div>
+                   
     </header>
     <main id="main-content">
         <div class="introduction-text">
@@ -48,8 +50,20 @@
                     <p>Album</p>
                     <p>Actions</p>
                 </div>
+                <div class="result-section_single">
+                    <span class="id-single col-1"></span>
+                    <span class="artist-name col-2"></span>
+                    <span class="artist-single col-3"></span>
+                    <div class="result-album"></div>
+                </div>
                 <div class="result-section_counter"></div>
+                <div class="result-section_album"></div>
+
+                
             </div>
+            <div class="show-more-btn">
+                <a href="" class="button show-more-btn">Show more</a>
+                </div>
         </div>
     </main>
 </body>

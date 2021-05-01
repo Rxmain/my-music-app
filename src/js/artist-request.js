@@ -1,5 +1,3 @@
-// const { off } = require("gulp");
-
 const artistTitle = 'Daft punk';
 const result = document.querySelector('.result-section');
 const resultNumber = document.querySelector('.result-section_counter');
@@ -13,7 +11,7 @@ let titleContent = document.querySelector('.artist-single');
 
 
 let showMore = document.querySelector('.show-more-btn');
-
+let offset = 0;
 
 
 function getIdArtist(success, error) {
@@ -34,7 +32,7 @@ function getIdArtist(success, error) {
     });
     request.send();
 }
-getIdArtist(function(resp) {
+getIdArtist(function(resp) {
 
     console.log(resp);
 
@@ -42,10 +40,21 @@ getIdArtist(function(resp) {
     console.log('Erreur');
 };
 
+
+showMore.addEventListener("click",function(event){
+    event.preventDefault();
+    setTimeout(function(){ 
+        offset+=10;
+        startSearch();
+    }, 5000);
+});
+
+console.log(offset);
+
 function searchArtistSingle(success, error) {
     const request = new XMLHttpRequest();
     request.open('GET', 'https://musicbrainz.org/ws/2/recording?fmt=json&limit=10&offset='+offset+'&artist=056e4f3e-d505-4dad-8ec1-d04f521cbb56');
-    request.setRequestHeader("Accept", "application/json");
+
     request.addEventListener("readystatechange", function () {
         if (request.readyState === XMLHttpRequest.DONE) {
             // On a reçu toute la réponse
@@ -62,67 +71,66 @@ function searchArtistSingle(success, error) {
 }
 let childCopy;
 let number = 0;
+let idSingle = "";
 
-function searchArtistAlbum(success, error) {
-    let idSingle = "";
+function startSearch() {
 
     searchArtistSingle(function(resp) {
 
         for (let i = 0; i < resp.recordings.length; i++) {
-            let idSingle = resp.recordings[i].id;
-
             number++;
-
+    
             let childCopy = mainResult.cloneNode(true);
             childCopy.children[0].textContent = number;
             childCopy.children[1].textContent = artistTitle;
             childCopy.children[2].textContent = resp.recordings[i].title;
             resultSection.appendChild(childCopy);
-
-            const request = new XMLHttpRequest();
-            request.open('GET', 'https://musicbrainz.org/ws/2/release?fmt=json&limit=10&offset='+offset+'&recording='+idSingle+'');
-            request.setRequestHeader("Accept", "application/json");
-            request.addEventListener("readystatechange", function () {
-                if (request.readyState === XMLHttpRequest.DONE) {
-                    // On a reçu toute la réponse
-                    if (request.status === 200) {
-                        // La requête a fonctionnée
-                        const response = JSON.parse(request.responseText);
-                        success(response);
-                    } else {
-                        error();
-                    }
+            
+            idSingle = resp.recordings[i].id;
+            searchArtistAlbum(function(resp) {            
+    
+                if(resp.releases[0] !== undefined) {
+                    childCopy.children[3].textContent = resp.releases[0].title;
+                } else {
+                    childCopy.children[3].textContent = "Album inconnu";
                 }
-            });
-            request.send();
+                            
+            }), function() {
+                console.log('Erreur');
+            };    
+    
+    
+            
         }
-    }), function() {
-        console.log('Erreur');
+    
+        }), function() {
+            console.log('Erreur');
     };
 }
+startSearch();
 
-let albumReturn = '';
-let albumSingle = document.createElement('div');
 
-searchArtistAlbum(function(resp) {
-    console.log(resp);
+function searchArtistAlbum(success, error) {
 
-    let thing = resp.releases;
+    let albumReturn = '';
+    const request = new XMLHttpRequest();
+        request.open('GET', 'https://musicbrainz.org/ws/2/release?fmt=json&limit=10&offset=0&recording='+idSingle+'');
+        request.addEventListener("readystatechange", function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                // On a reçu toute la réponse
+                if (request.status === 200) {
+                    // La requête a fonctionnée
+                    const response = JSON.parse(request.responseText);
+                    success(response);
+                } else {
+                    error();
+                }
+            }
+        });
+        request.send();
+}
 
-    thing.forEach(function() {
 
-        const li = document.createElement('span');
-        li.className = 'album-single col-4';
-
-        li.textContent = thing[0].title;
-        document.querySelector('.result-album').appendChild(li);
-    })
-
-    resultSection.appendChild(albumSingle);
- 
-}), function() {
-    console.log('Erreur');
-};
 
 
 const selectBoxArtist = document.querySelector('select').value = 'artist';

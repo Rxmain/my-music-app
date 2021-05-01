@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: https://musicbrainz.org/'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ECF">
     <link rel="stylesheet" href="assets/css/main.min.css">
-
     <title>RythmiQ</title>
 </head>
 <body>
@@ -67,5 +67,5 @@
         </div>
     </main>
 </body>
-<script src="assets/js/bundle.min.js"></script>
+<script src="src/js/artist-request.js"></script>
 </html>

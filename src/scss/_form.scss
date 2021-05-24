@@ -125,6 +125,9 @@ select {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    p {
+        margin: 5px 0;
+    }
   }
   
   /* The Close Button */
@@ -170,6 +173,8 @@ select {
     margin-right: 0;
     margin-left: auto;
     cursor: pointer;
+    font-size: 8.3px;
+    font-weight: bold;
         &:before {
             content: "";
             background-image: url('../../assets/img/cancel.svg');

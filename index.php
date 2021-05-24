@@ -21,7 +21,6 @@
 
             </div>
             <div class="music-background"></div>
-           
         </div>
                    
     </header>
@@ -59,7 +58,9 @@
                     <span class="action col-5">
                         <a href="#" class="modal-btn"></a>
                         <div class="modal">
-                            <div class="modal-content"></div>
+                            <div class="modal-content">
+                                <h3>Plus d'infos</h3>
+                            </div>
                         </div>
                     </span>
                 </div>

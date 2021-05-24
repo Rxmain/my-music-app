@@ -47,7 +47,6 @@ function enterSubmit() {
 form.addEventListener('submit', function(e) {
     number = 0;
     e.preventDefault();
-    showMore.removeEventListener('click', handler, true);
 
     if(select.value === "album") {
         searchByAlbum();
@@ -102,10 +101,7 @@ function searchByArtist() {
                 startSearch();
             }, 5000);
         };
-        showMore.removeEventListener('click', handler, true);
         showMore.addEventListener('click', handler, true);
-
-
 
         for (let i = 1; i < mainResultDelete.length; i++) {
             mainResultDelete[i].remove();
@@ -154,6 +150,7 @@ function searchByArtist() {
 
                 let closingCross = document.createElement('span');
                 closingCross.classList.add('closing');
+                closingCross.textContent = "Fermer";
                 modalContent.appendChild(closingCross);
 
                 let titleModal = document.createElement('p');
@@ -285,9 +282,7 @@ function searchByArtist() {
 // Recherche par titre
 function searchByTitle() {
 
-
     const artistTitle = nameInputForm.value;
-    
 
     function getTitleSong(success, error) {
         const request = new XMLHttpRequest();
@@ -309,7 +304,6 @@ function searchByTitle() {
     }
     getTitleSong(function(resp) {
     
-
         mainResultDelete = document.querySelectorAll('.result-section_single');
 
          handler = function(event){
@@ -333,9 +327,7 @@ function searchByTitle() {
             mainResultDelete[i].remove();
         }
         offset = 0;
-        startSearch();
-        // showMore.style.display = "block";
-        
+        startSearch();        
 
     }), function() {
         console.log('Erreur');
@@ -417,7 +409,7 @@ function searchByTitle() {
                 albumId = resp.recordings[i].releases[0].id;
                     albumModal.textContent = "Album: " + resp.recordings[i].releases[0].title;
 
-                    searchArtistAlbumCover(function(resp) {
+                searchArtistAlbumCover(function(resp) {
     
                         for (let i = 0; i < resp.images.length; i++) {
                             let imageAlbum = document.createElement('img');
@@ -427,12 +419,10 @@ function searchByTitle() {
                             modalContent.appendChild(imageAlbum);
                         }
                                     
-                    }), function() {
-                        console.log('Erreur');
-                    };    
-                                
+                }), function() {
+                    console.log('Erreur');
+                };               
                 resultSection.appendChild(newChildCopy); 
-
             }
         
             }), function() {
@@ -583,30 +573,29 @@ function searchByAlbum() {
                 
                 albumId = resp.releases[i].id;
 
-                    if(resp.releases[i] !== undefined) {
-                        newChildCopy.children[3].textContent = resp.releases[i].title;
-                    } else {
-                        childCopy.children[3].textContent = "Album inconnu";
+                if(resp.releases[i] !== undefined) {
+                    newChildCopy.children[3].textContent = resp.releases[i].title;
+                } else {
+                    childCopy.children[3].textContent = "Album inconnu";
+                }
+
+                albumModal.textContent = "Album: " + resp.releases[i].title;
+
+                searchArtistAlbumCover(function(resp) {
+
+                    for (let i = 0; i < resp.images.length; i++) {
+                        let imageAlbum = document.createElement('img');
+                        imageAlbum.classList.add('image-album');
+                        imageAlbum.src = resp.images[i].image;
+
+                        modalContent.appendChild(imageAlbum);
                     }
-
-                    albumModal.textContent = "Album: " + resp.releases[i].title;
-
-                    searchArtistAlbumCover(function(resp) {
-    
-                        for (let i = 0; i < resp.images.length; i++) {
-                            let imageAlbum = document.createElement('img');
-                            imageAlbum.classList.add('image-album');
-                            imageAlbum.src = resp.images[i].image;
-
-                            modalContent.appendChild(imageAlbum);
-                        }
-                                    
-                    }), function() {
-                        console.log('Erreur');
-                    };    
+                                
+                }), function() {
+                    console.log('Erreur');
+                };    
                                 
                 resultSection.appendChild(newChildCopy); 
-
             }
         
             }), function() {

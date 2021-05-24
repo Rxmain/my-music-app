@@ -43,7 +43,7 @@
                 <input type="submit" value="Recherche" class="button">
             </form>
             <div class="result-section">
-            
+
                 <div class="result-section_container">
                     <p>#</p>
                     <p>Artiste</p>
@@ -76,6 +76,6 @@
         </div>
     </main>
 </body>
-<script src="src/js/artist-request.js"></script>
+<script src="src/js/search-request.js"></script>
 
 </html>

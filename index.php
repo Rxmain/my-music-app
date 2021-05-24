@@ -54,18 +54,28 @@
                     <span class="id-single col-1"></span>
                     <span class="artist-name col-2"></span>
                     <span class="artist-single col-3"></span>
-                    <div class="result-album"></div>
+                    <span class="artist-album col-4"></span>
+                    <span class="action col-5">
+                        <a href="#" class="modal-btn"></a>
+                        <div class="modal">
+                            <div class="modal-content"></div>
+                        </div>
+                    </span>
                 </div>
                 <div class="result-section_counter"></div>
                 <div class="result-section_album"></div>
 
                 
             </div>
-            <div class="show-more-btn">
-                <a href="" class="button show-more-btn">Show more</a>
+            <div class="show-more-btn more-btn">
+                <a href="#" class="button show-more-btn">Show more
+                <span class="spinner"></span>
+                </a>
                 </div>
         </div>
     </main>
 </body>
 <script src="src/js/artist-request.js"></script>
+<script src="src/js/submit-form.js"></script>
+
 </html>

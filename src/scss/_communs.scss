@@ -93,6 +93,9 @@ p {
     align-items: center;
     justify-content: space-evenly;
 
+    padding-right: 20px;
+    padding-left: 20px;
+
     &::before {
         content: "";
         background-image: url('../img/double-arrow.svg');

@@ -1,6 +1,9 @@
 main {
     margin-top: 15rem;
     margin-bottom: 150px;
+    background-color: #ffff4d;
+    padding-bottom: 20rem;
+
 }
 .introduction-text {
     margin-left: 10rem;
@@ -11,7 +14,6 @@ main {
     font-size: 4rem;
 }
 .search-form_container {
-    background-color: #ffff4d;
     margin-top: 5rem;
     .underline {
         margin-left: 10rem;
@@ -20,7 +22,7 @@ main {
 .search-form {
     display: flex;
     align-items: baseline;
-    min-height: 30rem;
+    min-height: 20rem;
     justify-content: space-around;
     max-width: 170rem;
     margin: 0 auto;
@@ -142,6 +144,70 @@ select {
     text-decoration: none;
     cursor: pointer;
   } 
-  .show-more-btn {
-      text-align: center;
+  .showMoreDiv {
+      display: block;
   }
+  .show-more-btn {
+    //   display: none;
+      text-align: center;
+      position: relative;
+      margin-bottom: 150px;
+  }
+  .action {
+      display: block;
+      margin: 0 auto;
+      a:before {
+          content: "";
+          background-image: url('../../assets/img/plus.svg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 15px;
+          height: 15px;
+
+          display: block;
+      }
+  }
+  .closing {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 0;
+    margin-left: auto;
+    cursor: pointer;
+        &:before {
+            content: "";
+            background-image: url('../../assets/img/cancel.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 15px;
+            height: 15px;
+
+            display: block;
+        }
+  }
+
+
+  .spinner {
+      background-image: url('../../assets/img/spinner.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      content: "";
+    //   display: block;
+      height: 30px;
+      width: 30px;
+
+      position: absolute;
+      right: -60px;
+      display: none;
+
+      animation: rotate 4s infinite linear;
+
+  }  
+  @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to  {
+        transform: rotate(360deg);
+    }
+}

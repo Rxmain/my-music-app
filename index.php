@@ -33,7 +33,7 @@
         <div class="search-form_container">
             <p class="underline">Recherchez par artiste, titre, album</p>
             <form class='search-form' action="">
-                <input type="text" name='user-search' class='user-search'>
+                <input type="text" name='user-search' class='user-search' placeholder='Recherche par titre, artiste, album ou tous'>
                 <select name="genre" id="genre-select">
                     <option value="">Tous</option>
                     <option value="artist">Artiste</option>
@@ -43,6 +43,7 @@
                 <input type="submit" value="Recherche" class="button">
             </form>
             <div class="result-section">
+            
                 <div class="result-section_container">
                     <p>#</p>
                     <p>Artiste</p>
@@ -76,6 +77,5 @@
     </main>
 </body>
 <script src="src/js/artist-request.js"></script>
-<script src="src/js/submit-form.js"></script>
 
 </html>
